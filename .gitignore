@@ -307,3 +307,5 @@ OpenCover/
 # VSCode
 
 .vscode/
+
+**/.DS_Store
