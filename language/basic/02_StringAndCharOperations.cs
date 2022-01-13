@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Xunit;
@@ -14,13 +15,13 @@ namespace basic
             const string name = "Hall";
 
             // change "default(string)" to correct value.
-            const string expectedResult = default(string);
+            const string expectedResult = "Mr. Hall";
 
             Assert.Equal(expectedResult, (title + name));
         }
 
-        #pragma warning disable CS0219
-        
+#pragma warning disable CS0219
+
         [Fact]
         [SuppressMessage("ReSharper", "UnusedVariable")]
         public void should_using_stringbuilder_to_concat_string_efficiently()
@@ -30,11 +31,12 @@ namespace basic
 
             var builder = new StringBuilder();
             // add at most 2 lines of code here concating variable "title" and "name".
+            builder.Append(title).Append(name);
 
             Assert.Equal("Mr. Hall", builder.ToString());
         }
-        
-        #pragma warning restore CS0219
+
+#pragma warning restore CS0219
 
         [Fact]
         public void should_create_a_new_string_for_replace_operation()
@@ -43,9 +45,9 @@ namespace basic
             string replacement = originalString.Replace("Str", "W");
 
             // change "" in the following 2 lines to correct values.
-            const string expectedOrignalString = "";
-            const string expectedReplacement = "";
-            
+            const string expectedOrignalString = "Original String";
+            const string expectedReplacement = "Original Wing";
+
             Assert.Equal(expectedOrignalString, originalString);
             Assert.Equal(expectedReplacement, replacement);
         }
@@ -57,7 +59,7 @@ namespace basic
             builder.Replace("Str", "W");
 
             // change "" in the following line to correct value.
-            const string expectedResult = "";
+            const string expectedResult = "Original Wing";
 
             Assert.Equal(expectedResult, builder.ToString());
         }
@@ -69,19 +71,20 @@ namespace basic
             char characterAtIndex2 = originalString[2];
 
             // change "default(char)" to correct value.
-            const char expectedResult = default (char);
+            const char expectedResult = 'i';
 
             Assert.Equal(expectedResult, characterAtIndex2);
         }
 
         [Fact]
+        [Description("字符串常量池")]
         public void should_compare_string_value()
         {
             const string str = "Original String";
             string equivalent = "Original" + " String";
 
             // change "default(bool)" to correct value.
-            const bool expectedResult = default(bool);
+            const bool expectedResult = true;
 
             Assert.Equal(expectedResult, (str == equivalent));
         }
@@ -93,8 +96,8 @@ namespace basic
             const string inDifferentCase = "oRiginal String";
 
             // change the variable values in the following 2 lines.
-            var caseSensitiveComparison = StringComparison.InvariantCultureIgnoreCase;
-            var caseInsensitiveComparison = StringComparison.InvariantCulture;
+            var caseSensitiveComparison = StringComparison.CurrentCulture;
+            var caseInsensitiveComparison = StringComparison.CurrentCultureIgnoreCase;
 
             Assert.False(originalString.Equals(inDifferentCase, caseSensitiveComparison));
             Assert.True(originalString.Equals(inDifferentCase, caseInsensitiveComparison));
