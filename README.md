@@ -1,5 +1,7 @@
 # 学习 csharp
 
+* 项目fork自 [lxconan/csharp](https://github.com/lxconan/csharp)
+
 * 通过完成测试的方式学习csharp
 * 克隆代码，可以切换至base分支, [base分支](https://github.com/LiangLliu/csharp/tree/base)
 * 根据测试中的提示，完成代码，使测试可以通过
